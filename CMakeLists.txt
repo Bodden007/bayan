@@ -10,7 +10,12 @@ set (CMAKE_CXX_STANDARD 20)
 
 set (BOOST_ROOT "C:/boost") # директория boost
 
-add_executable(bayan main.cpp)
+add_executable(bayan src/main.cpp)
+
+target_include_directories(bayan
+    PRIVATE
+    includes/
+)
 
 find_package (Boost REQUIRED COMPONENTS filesystem system 
 program_options REQUIRED)
