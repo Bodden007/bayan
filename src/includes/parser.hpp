@@ -7,6 +7,7 @@
 #include <iterator>
 #include <boost/filesystem.hpp>
 #include <boost/algorithm/cxx11/any_of.hpp>
+#include "sortingData.hpp"
 
 namespace fs = boost::filesystem;
 
@@ -19,7 +20,7 @@ private:
     std::vector<boost::filesystem::path> dataExc;
     std::vector<boost::filesystem::path> dataBuf;
     std::vector<boost::filesystem::path> dataOut;
-    std::map<std::string, std::vector<fs::path>> dataMap;
+    std::map<std::string, std::vector<std::string>> dataMap;
 
 public:
     void setParser(int levelScan, const std::vector<std::string> &include,

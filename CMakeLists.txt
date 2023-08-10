@@ -11,7 +11,8 @@ set (CMAKE_CXX_STANDARD 20)
 set (BOOST_ROOT "C:/boost") # директория boost
 
 add_executable(bayan src/main.cpp
-src/models/parser.cpp)
+src/models/parser.cpp
+src/models/sortingData.cpp)
 
 target_include_directories(bayan
     PRIVATE

@@ -17,6 +17,7 @@ void parser::setParser(int levelScan, const std::vector<std::string> &include,
 
 void parser::parserSort(int levelScan)
 {
+    sortingData sorting;
 
     if (levelScan == 0)
     {
@@ -29,7 +30,7 @@ void parser::parserSort(int levelScan)
             {
                 if (is_regular_file(dataBuf[j]) && fs::file_size(dataBuf[j]) > 1)
                 {
-                    dataMap[dataDir[i]].push_back(dataBuf[j].filename());
+                    dataMap[dataDir[i]].push_back(dataBuf[j].filename().generic_string());
                 }
             }
             dataBuf.clear();
@@ -43,22 +44,21 @@ void parser::parserSort(int levelScan)
             std::cout << "level Scan: " << i << std::endl;
             for (int i = 0; i < dataDir.size(); i++)
             {
-
                 if (dataExc.size() > 0)
                 {
                     fs::path dataDirP(dataDir[i]);
                     coinDir = boost::algorithm::any_of_equal(dataExc.begin(), dataExc.end(), dataDirP);
                 }
-                std::cout << std::boolalpha << coinDir << std::endl;
+
                 if (!coinDir)
                 {
                     parserDir(dataDir[i]);
                     for (int j = 0; j < dataBuf.size(); j++)
                     {
-                        std::cout << "dataBuf[i]  " << dataBuf[j] << std::endl;
+                        // std::cout << "dataBuf[i]  " << dataBuf[j] << std::endl;
                         if (is_regular_file(dataBuf[j]) && fs::file_size(dataBuf[j]) > 1)
                         {
-                            dataMap[dataDir[i]].push_back(dataBuf[j].filename());
+                            dataMap[dataDir[i]].push_back(dataBuf[j].filename().generic_string());
                         }
                         else if (is_directory(dataBuf[j]))
                         {
@@ -82,14 +82,7 @@ void parser::parserSort(int levelScan)
         std::cout << "Invalid format scan level: " << levelScan << std::endl;
     }
 
-    for (const auto &[key, vec] : dataMap)
-    {
-        std::cout << std::endl;
-        std::cout << "-------Key:  " << key << std::endl;
-
-        for (const auto element : vec)
-            std::cout << "value:  " << element << std::endl;
-    }
+    sorting.sortDat(dataMap);
 }
 
 void parser::parserDir(std::string val)
