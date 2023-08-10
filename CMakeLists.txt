@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0.0)
+cmake_minimum_required(VERSION 3.26)
 project(bayan VERSION 0.1.0 LANGUAGES C CXX)
 
 set(PATCH_VERSION "1" CACHE INTERNAL "Patch version")
@@ -10,7 +10,8 @@ set (CMAKE_CXX_STANDARD 20)
 
 set (BOOST_ROOT "C:/boost") # директория boost
 
-add_executable(bayan src/main.cpp)
+add_executable(bayan src/main.cpp
+src/models/parser.cpp)
 
 target_include_directories(bayan
     PRIVATE
