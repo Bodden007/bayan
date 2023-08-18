@@ -4,33 +4,39 @@ void sortingData::sortDat(std::map<std::string, std::vector<std::string>> dataMa
 {
     for (const auto &[key, vec] : dataMap)
     {
-        std::cout << std::endl;
-        keyMap.push_back(key);
-        // std::cout << "dataMap Key:  " << key << std::endl;
-    }
-    quanKey = dataMap.size();
-    std::cout << "Size:  " << dataMap.size() << std::endl;
-
-    for (int i = 0; i < quanKey - 1; i++)
-    {
-        comparMap = dataMap.at(keyMap[i]);
-        for (int j = i + 1; j < quanKey; j++)
+        for (const auto v : vec)
         {
-            elementMap = dataMap.at(keyMap[j]);
-
-            for (int p = 0; p < comparMap.size(); p++)
+            std::filesystem::path exten = v;
+            if (exten.extension().compare(".txt") == 0)
             {
-                bool found = boost::algorithm::any_of_equal(elementMap, comparMap[p]);
-                if (found)
-                {
-                    std::cout << "Matches found in the directory:" << std::endl;
-                    std::cout << "First catalog: " << keyMap[i] << std::endl;
-                    std::cout << "Second catalog: " << keyMap[j] << std::endl;
-                    std::cout << "file: " << comparMap[i] << std::endl;
-                }
+                std::size_t buff = crcDat.crcHash(exten);
+                std::vector<std::string> vecBuf;
+                mapCrc[buff].push_back(key);
+                mapCrc[buff].push_back(exten.filename().generic_string());
             }
-            elementMap.clear();
         }
-        comparMap.clear();
+    }
+
+    for (const auto &[key, value] : mapCrc)
+    {
+        keyMap.push_back(key);
+    }
+
+    for (int i = 0; i < keyMap.size(); i++)
+    {
+        elementMap = mapCrc.at(keyMap[i]);
+        if (elementMap.size() > 2)
+        {
+            std::cout << std::endl;
+            std::cout << "duplicate detected:" << std::endl;
+            std::cout << std::endl;
+            for (auto doub : elementMap)
+            {
+                std::cout << doub << std::endl;
+            }
+            std::cout << std::endl;
+            std::cout << "Sum hash:  " << keyMap[i] << std::endl;
+        }
+        elementMap.clear();
     }
 }

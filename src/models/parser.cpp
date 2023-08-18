@@ -21,7 +21,6 @@ void parser::parserSort(int levelScan)
 
     if (levelScan == 0)
     {
-        std::cout << std::endl;
         std::cout << "level Scan: " << levelScan << std::endl;
         for (int i = 0; i < dataDir.size(); i++)
         {
@@ -30,7 +29,8 @@ void parser::parserSort(int levelScan)
             {
                 if (is_regular_file(dataBuf[j]) && fs::file_size(dataBuf[j]) > 1)
                 {
-                    dataMap[dataDir[i]].push_back(dataBuf[j].filename().generic_string());
+                    // NOTE delete filename
+                    dataMap[dataDir[i]].push_back(dataBuf[j].generic_string());
                 }
             }
             dataBuf.clear();
@@ -40,7 +40,6 @@ void parser::parserSort(int levelScan)
     {
         for (int i = levelScan; i >= 0; i--)
         {
-            std::cout << std::endl;
             std::cout << "level Scan: " << i << std::endl;
             for (int i = 0; i < dataDir.size(); i++)
             {
@@ -55,17 +54,18 @@ void parser::parserSort(int levelScan)
                     parserDir(dataDir[i]);
                     for (int j = 0; j < dataBuf.size(); j++)
                     {
-                        // std::cout << "dataBuf[i]  " << dataBuf[j] << std::endl;
                         if (is_regular_file(dataBuf[j]) && fs::file_size(dataBuf[j]) > 1)
                         {
-                            dataMap[dataDir[i]].push_back(dataBuf[j].filename().generic_string());
+                            // NOTE delete filename
+                            dataMap[dataDir[i]].push_back(dataBuf[j].generic_string());
                         }
                         else if (is_directory(dataBuf[j]))
                         {
                             dataOut.push_back(dataBuf[j]);
                         }
                     }
-                    std::cout << std::endl;
+                    // FIXME
+                    //  std::cout << std::endl;
                     dataBuf.clear();
                 }
             }
@@ -98,7 +98,8 @@ void parser::parserDir(std::string val)
             }
             else if (is_directory(p))
             {
-                std::cout << p << " is a directory containing:\n";
+                // FIXME
+                //  std::cout << p << " is a directory containing:\n";
 
                 std::vector<fs::path> v;
 

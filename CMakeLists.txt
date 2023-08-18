@@ -12,7 +12,8 @@ set (BOOST_ROOT "C:/boost")
 
 add_executable(bayan src/main.cpp
 src/models/parser.cpp
-src/models/sortingData.cpp)
+src/models/sortingData.cpp
+src/models/crc.cpp)
 
 target_include_directories(bayan
     PRIVATE
