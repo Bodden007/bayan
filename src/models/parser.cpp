@@ -29,7 +29,6 @@ void parser::parserSort(int levelScan)
             {
                 if (is_regular_file(dataBuf[j]) && fs::file_size(dataBuf[j]) > 1)
                 {
-                    // NOTE delete filename
                     dataMap[dataDir[i]].push_back(dataBuf[j].generic_string());
                 }
             }
@@ -56,7 +55,6 @@ void parser::parserSort(int levelScan)
                     {
                         if (is_regular_file(dataBuf[j]) && fs::file_size(dataBuf[j]) > 1)
                         {
-                            // NOTE delete filename
                             dataMap[dataDir[i]].push_back(dataBuf[j].generic_string());
                         }
                         else if (is_directory(dataBuf[j]))
@@ -64,8 +62,6 @@ void parser::parserSort(int levelScan)
                             dataOut.push_back(dataBuf[j]);
                         }
                     }
-                    // FIXME
-                    //  std::cout << std::endl;
                     dataBuf.clear();
                 }
             }
@@ -98,9 +94,6 @@ void parser::parserDir(std::string val)
             }
             else if (is_directory(p))
             {
-                // FIXME
-                //  std::cout << p << " is a directory containing:\n";
-
                 std::vector<fs::path> v;
 
                 for (auto &&x : fs::directory_iterator(p))

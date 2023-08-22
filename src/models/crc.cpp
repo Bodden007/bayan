@@ -19,7 +19,5 @@ std::size_t crc::crcHash(std::filesystem::path inData)
     {
         std::cerr << "Failed to open file " << std::endl;
     }
-    // TODO change
-    // std::cout << std::hex << result.checksum() << std::endl;
     return result.checksum();
 }

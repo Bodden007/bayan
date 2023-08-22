@@ -9,6 +9,7 @@ void sortingData::sortDat(std::map<std::string, std::vector<std::string>> dataMa
             std::filesystem::path exten = v;
             if (exten.extension().compare(".txt") == 0)
             {
+                // NOTE return hash file
                 std::size_t buff = crcDat.crcHash(exten);
                 std::vector<std::string> vecBuf;
                 mapCrc[buff].push_back(key);
@@ -30,12 +31,10 @@ void sortingData::sortDat(std::map<std::string, std::vector<std::string>> dataMa
             std::cout << std::endl;
             std::cout << "duplicate detected:" << std::endl;
             std::cout << std::endl;
-            for (auto doub : elementMap)
-            {
-                std::cout << doub << std::endl;
-            }
+            // NOTE class compareFile method compare
+            compFile.compare(elementMap);
             std::cout << std::endl;
-            std::cout << "Sum hash:  " << keyMap[i] << std::endl;
+            std::cout << "Sum hash:  " << std::hex << keyMap[i] << std::endl;
         }
         elementMap.clear();
     }
