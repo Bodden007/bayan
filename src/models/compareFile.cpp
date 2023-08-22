@@ -65,7 +65,4 @@ void compareFile::openFile(std::string filePath)
     {
         std::cout << "File not open!!" << std::endl;
     }
-
-    // buf.push_back(fileStr);
-    // fileStr.clear();
 }
