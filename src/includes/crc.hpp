@@ -10,8 +10,20 @@
 
 std::streamsize const buffer_size = PRIVATE_BUFFER_SIZE;
 
+/**
+ * @brief Hash sum calculation class
+ *
+ * Hash sum calculation class , with connection of boost crc 32 library
+ */
+
 class crc
 {
 public:
+    /**
+     * @brief Hash sum calculation
+     *
+     * @param inData File path
+     * @return std::size_t Hash sum
+     */
     std::size_t crcHash(std::filesystem::path inData);
 };

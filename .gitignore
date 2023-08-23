@@ -34,3 +34,6 @@
 # Local file
 /.vscode
 /build
+/html
+/latex
+/rtf

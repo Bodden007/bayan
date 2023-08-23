@@ -11,6 +11,11 @@
 
 namespace fs = boost::filesystem;
 
+/**
+ * @brief Path processing class
+ *
+ */
+
 class parser
 {
 private:
@@ -23,8 +28,25 @@ private:
     std::map<std::string, std::vector<std::string>> dataMap;
 
 public:
+    /**
+     * @brief Set the Parser object
+     *
+     * @param levelScan Scan level
+     * @param include Include patch
+     * @param exclude Exclude patch
+     */
     void setParser(int levelScan, const std::vector<std::string> &include,
                    const std::vector<std::string> &exclude);
+    /**
+     * @brief Scanning depth
+     *
+     * @param levelScan Scan level
+     */
     void parserSort(int levelScan);
+    /**
+     * @brief Sorting paths
+     *
+     * @param val Patch
+     */
     void parserDir(std::string val);
 };

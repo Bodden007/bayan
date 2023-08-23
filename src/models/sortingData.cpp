@@ -7,14 +7,16 @@ void sortingData::sortDat(std::map<std::string, std::vector<std::string>> dataMa
         for (const auto v : vec)
         {
             std::filesystem::path exten = v;
-            if (exten.extension().compare(".txt") == 0)
-            {
-                // NOTE return hash file
-                std::size_t buff = crcDat.crcHash(exten);
-                std::vector<std::string> vecBuf;
-                mapCrc[buff].push_back(key);
-                mapCrc[buff].push_back(exten.filename().generic_string());
-            }
+
+            // FIXME Need will delete
+            //  if (exten.extension().compare(".txt") == 0)
+            //{
+            //   NOTE return hash file
+            std::size_t buff = crcDat.crcHash(exten);
+            std::vector<std::string> vecBuf;
+            mapCrc[buff].push_back(key);
+            mapCrc[buff].push_back(exten.filename().generic_string());
+            //}
         }
     }
 
