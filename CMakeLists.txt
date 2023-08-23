@@ -23,6 +23,7 @@ target_include_directories(bayan
 
 find_package (Boost REQUIRED COMPONENTS filesystem system 
 program_options REQUIRED)
+
 if (Boost_FOUND)
     include_directories (SYSTEM ${Boost_INCLUDE_DIR})    
     target_link_libraries (bayan ${Boost_LIBRARIES}) 
