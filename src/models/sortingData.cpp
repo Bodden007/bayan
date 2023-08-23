@@ -8,7 +8,7 @@ void sortingData::sortDat(std::map<std::string, std::vector<std::string>> dataMa
         {
             std::filesystem::path exten = v;
 
-            // FIXME Need will delete
+            // FIXME Need will delete After the test
             //  if (exten.extension().compare(".txt") == 0)
             //{
             //   NOTE return hash file
