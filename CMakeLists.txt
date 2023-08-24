@@ -19,7 +19,7 @@ target_include_directories(bayan
     includes/
 )
 
-set (BOOST_ROOT "C:/boost") 
+
 
 find_package (Boost COMPONENTS  filesystem 
 program_options REQUIRED)
