@@ -14,6 +14,8 @@ std::streamsize const buffer_size = PRIVATE_BUFFER_SIZE;
  * @brief Hash sum calculation class
  *
  * Hash sum calculation class , with connection of boost crc 32 library
+ *
+ *\include crc.cpp
  */
 
 class crc

@@ -8,8 +8,6 @@ project (bayan VERSION ${PROJECT_VERSION})
 
 set (CMAKE_CXX_STANDARD 20) 
 
-set (BOOST_ROOT "C:/boost") 
-
 add_executable(bayan src/main.cpp
 src/models/parser.cpp
 src/models/sortingData.cpp
