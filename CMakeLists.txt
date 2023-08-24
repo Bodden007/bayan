@@ -21,12 +21,14 @@ target_include_directories(bayan
 
 set (BOOST_ROOT "C:/boost") 
 
-find_package (Boost 1.74.0 REQUIRED filesystem system 
+find_package (Boost REQUIRED filesystem system 
 program_options REQUIRED)
 
 if (Boost_FOUND)
     include_directories (SYSTEM ${Boost_INCLUDE_DIR})    
-    target_link_libraries (bayan ${Boost_LIBRARIES}) 
+    target_link_libraries (bayan 
+    PUBLIC
+    ${Boost_LIBRARIES}) 
 endif ()
 install(TARGETS bayan RUNTIME DESTINATION bin)
 
