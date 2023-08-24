@@ -1,4 +1,4 @@
-#include "..\includes\parser.hpp"
+#include "../includes/parser.hpp"
 
 void parser::setParser(int levelScan, const std::vector<std::string> &include,
                        const std::vector<std::string> &exclude)
