@@ -21,7 +21,7 @@ target_include_directories(bayan
 
 set (BOOST_ROOT "C:/boost") 
 
-find_package (Boost REQUIRED filesystem system 
+find_package (Boost 1.82.0 REQUIRED filesystem system 
 program_options REQUIRED)
 
 if (Boost_FOUND)
